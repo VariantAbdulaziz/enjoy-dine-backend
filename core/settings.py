@@ -41,10 +41,11 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'dj_rest_auth.registration',
+    'django_filters',
 
     # my apps
     'accounts',
-    'food',
+    'dine',
 ]
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -165,6 +166,9 @@ REST_FRAMEWORK = {
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
     ),
     'COERCE_DECIMAL_TO_STRING': False,
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
 
 SIMPLE_JWT = {

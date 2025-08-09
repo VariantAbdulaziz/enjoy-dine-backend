@@ -42,6 +42,7 @@ urlpatterns = [
       SocialAccountDisconnectView.as_view(),
       name='social_account_disconnect'
   ),
+  path('api/v1/dine/', include('dine.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

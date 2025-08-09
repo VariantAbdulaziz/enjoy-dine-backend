@@ -19,6 +19,7 @@ pytest = "*"
 channels = "*"
 django-allauth = {extras = ["socialaccount"], version = "*"}
 pillow = "*"
+django-filter = "*"
 
 [dev-packages]
 
