@@ -47,7 +47,7 @@ class FoodViewSet(viewsets.ModelViewSet):
     queryset = Food.objects.all()
     serializer_class = FoodSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['name', 'restaurant__name']
+    filterset_fields = ['name', 'restaurant__name', 'featured']
     permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self):
@@ -59,6 +59,7 @@ class FoodViewSet(viewsets.ModelViewSet):
     @swagger_auto_schema(manual_parameters=[
         openapi.Parameter('name', openapi.IN_QUERY, description="Filter by food name", type=openapi.TYPE_STRING),
         openapi.Parameter('restaurant__name', openapi.IN_QUERY, description="Filter by restaurant name", type=openapi.TYPE_STRING),
+        openapi.Parameter('featured', openapi.IN_QUERY, description="Filter by featured status (true/false)", type=openapi.TYPE_BOOLEAN),  # new param
     ])
     def list(self, request, *args, **kwargs):
         return super().list(request, *args, **kwargs)
