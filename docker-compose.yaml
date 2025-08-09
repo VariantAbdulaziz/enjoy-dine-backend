@@ -1,0 +1,16 @@
+services:
+  db:
+    image: ankane/pgvector:latest
+    container_name: eskalate-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: eskalate
+
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./.db:/var/lib/postgresql/data
+
+volumes:
+  .db:
